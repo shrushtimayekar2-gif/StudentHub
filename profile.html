@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Student Hub Career</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f8f3;
+            color: #24352a;
+        }
+
+        nav {
+            background: #176b3a;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 16px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 18px;
+        }
+
+        .heading {
+            margin-bottom: 22px;
+        }
+
+        .heading h1 {
+            color: #176b3a;
+            margin-bottom: 8px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px #173c2110;
+        }
+
+        .avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #dff3e4;
+            color: #176b3a;
+            display: grid;
+            place-items: center;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5e0d7;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #21864a;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        button,
+        .secondary-button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .save-button {
+            background: #176b3a;
+            color: white;
+        }
+
+        .save-button:hover {
+            background: #10542c;
+        }
+
+        .secondary-button {
+            background: #e7f3e9;
+            color: #176b3a;
+        }
+
+        #message {
+            margin-top: 16px;
+            color: #176b3a;
+            font-weight: bold;
+        }
+
+        .note {
+            color: #68776c;
+            font-size: 13px;
+            margin-top: 18px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #68776c;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 12px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .profile-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Student Hub Career</div>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="applications.html">Applications</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="heading">
+            <h1>My Profile</h1>
+            <p>Manage your student information and career details.</p>
+        </div>
+
+        <section class="profile-card">
+            <div class="avatar" aria-hidden="true">👤</div>
+
+            <form id="profileForm">
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education">Education</label>
+                        <input
+                            type="text"
+                            id="education"
+                            name="education"
+                            placeholder="e.g. SYIT"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills">Skills</label>
+                        <input
+                            type="text"
+                            id="skills"
+                            name="skills"
+                            placeholder="e.g. HTML, CSS, JavaScript"
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="bio">About Me</label>
+                        <textarea
+                            id="bio"
+                            name="bio"
+                            placeholder="Write a short introduction about yourself"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" class="save-button">
+                        Save Profile
+                    </button>
+
+                    <button type="reset" class="secondary-button">
+                        Reset Form
+                    </button>
+                </div>
+
+                <p id="message" role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="note">
+                Demo note: Your profile is saved in this browser only.
+                It is not yet connected to the server or MySQL database.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Student Hub Career | Build Your Future
+    </footer>
+
+    <script>
+        const profileForm = document.getElementById("profileForm");
+        const message = document.getElementById("message");
+
+        const fields = [
+            "name",
+            "email",
+            "education",
+            "skills",
+            "bio"
+        ];
+
+        function loadProfile() {
+            const savedProfile = localStorage.getItem("studentProfile");
+
+            if (!savedProfile) {
+                return;
+            }
+
+            try {
+                const profile = JSON.parse(savedProfile);
+
+                fields.forEach(function (field) {
+                    document.getElementById(field).value =
+                        profile[field] || "";
+                });
+            } catch (error) {
+                localStorage.removeItem("studentProfile");
+            }
+        }
+
+        profileForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const profile = {};
+
+            fields.forEach(function (field) {
+                profile[field] =
+                    document.getElementById(field).value.trim();
+            });
+
+            localStorage.setItem(
+                "studentProfile",
+                JSON.stringify(profile)
+            );
+
+            message.textContent = "Profile saved successfully!";
+        });
+
+        profileForm.addEventListener("reset", function () {
+            message.textContent = "";
+        });
+
+        loadProfile();
+    </script>
+
+</body>
+</html>

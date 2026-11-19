@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Student Hub Career</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f7ee, #f8fcf9, #d8f0e1);
+            color: #193528;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: white;
+            border-bottom: 1px solid #e0eae3;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #193528;
+        }
+
+        .logo span {
+            color: #16834a;
+        }
+
+        .home-link {
+            color: #16834a;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            background: white;
+            border: 1px solid #e0eae3;
+            border-radius: 18px;
+            padding: 38px;
+            box-shadow: 0 15px 45px rgba(20, 75, 43, 0.09);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            display: grid;
+            place-items: center;
+            background: #e8f7ee;
+            border-radius: 16px;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow {
+            color: #16834a;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #6b7d73;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #dce8df;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            background: #fcfefc;
+        }
+
+        input:focus {
+            border-color: #16834a;
+            box-shadow: 0 0 0 3px #16834a18;
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .password-wrap input {
+            padding-right: 65px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #16834a;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+            font-size: 12px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: normal;
+        }
+
+        .remember input {
+            width: auto;
+        }
+
+        .form-options a,
+        .register-link a {
+            color: #16834a;
+            font-weight: bold;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background: #16834a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #0c6034;
+        }
+
+        .message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff0f0;
+            color: #a52b2b;
+        }
+
+        .message.success {
+            display: block;
+            background: #e8f7ee;
+            color: #126a3a;
+        }
+
+        .register-link {
+            margin-top: 23px;
+            text-align: center;
+            font-size: 13px;
+            color: #6b7d73;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: #6b7d73;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 27px 22px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">Student<span>Hub</span></a>
+    <a href="index.html" class="home-link">← Back to Home</a>
+</header>
+
+<main>
+    <section class="login-card">
+        <div class="icon">🎓</div>
+
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1>Login to your account</h1>
+        <p class="description">
+            Continue exploring opportunities for your future.
+        </p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrap">
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        id="togglePassword"
+                    >Show</button>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="remember">
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+
+                <a href="register.html">Create account</a>
+            </div>
+
+            <button type="submit" class="login-button" id="loginButton">
+                Login
+            </button>
+
+            <div id="message" class="message" role="status"></div>
+        </form>
+
+        <p class="register-link">
+            Don't have an account?
+            <a href="register.html">Register now</a>
+        </p>
+    </section>
+</main>
+
+<footer>
+    © 2026 Student Hub Career. All rights reserved.
+</footer>
+
+<script>
+    const loginForm = document.getElementById("loginForm");
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+    const message = document.getElementById("message");
+    const loginButton = document.getElementById("loginButton");
+
+    togglePassword.addEventListener("click", function() {
+        const isHidden = passwordInput.type === "password";
+
+        passwordInput.type = isHidden ? "text" : "password";
+        togglePassword.textContent = isHidden ? "Hide" : "Show";
+    });
+
+    loginForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        message.className = "message";
+        message.textContent = "";
+        loginButton.disabled = true;
+        loginButton.textContent = "Logging in...";
+
+        try {
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: document.getElementById("email").value.trim(),
+                    password: passwordInput.value
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Login failed. Check your details.");
+            }
+
+            message.className = "message success";
+            message.textContent = data.message || "Login successful!";
+
+            const params = new URLSearchParams(window.location.search);
+            const requestedRedirect = params.get("redirect");
+
+            const safeRedirect = requestedRedirect &&
+                !requestedRedirect.startsWith("//") &&
+                !requestedRedirect.includes("://") &&
+                !requestedRedirect.startsWith("/") &&
+                !requestedRedirect.includes("\\")
+                    ? requestedRedirect
+                    : "profile.html";
+
+            setTimeout(function() {
+                window.location.href = safeRedirect;
+            }, 800);
+
+        } catch (error) {
+            message.className = "message error";
+            message.textContent =
+                error.message === "Failed to fetch"
+                    ? "Cannot connect to the server. Start your Node.js server and try again."
+                    : error.message;
+        } finally {
+            loginButton.disabled = false;
+            loginButton.textContent = "Login";
+        }
+    });
+</script>
+
+</body>
+</html>

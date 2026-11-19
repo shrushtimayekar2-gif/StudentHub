@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Hub Career</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --green: #16834a;
+    --dark-green: #0c6034;
+    --light-green: #e8f7ee;
+    --text: #193528;
+    --muted: #6b7d73;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    color: var(--text);
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar {
+    min-height: 75px;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border-bottom: 1px solid #e0eae3;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+nav {
+    display: flex;
+    gap: 23px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--green);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 19px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--green);
+    transition: 0.25s;
+}
+
+.btn-primary {
+    color: white;
+    background: var(--green);
+}
+
+.btn-primary:hover {
+    background: var(--dark-green);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    color: var(--green);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--light-green);
+}
+
+.hero {
+    padding: 75px 8%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 45px;
+    align-items: center;
+    background: linear-gradient(120deg, #eefaf2, #ffffff, #e5f6eb);
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 4.5vw, 58px);
+    line-height: 1.16;
+    letter-spacing: -2px;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-description {
+    max-width: 540px;
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 27px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-note {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.check {
+    color: var(--green);
+    font-weight: 800;
+}
+
+.hero-card {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid #e0eee4;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(20,75,43,0.08);
+}
+
+.career-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    background: var(--light-green);
+    border-radius: 16px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.card-label {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.hero-card h2 {
+    font-size: 24px;
+    line-height: 1.4;
+    margin: 8px 0 20px;
+}
+
+.career-step {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid #e5eee7;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.career-step h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.career-step p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.section {
+    padding: 75px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin: 0 auto 40px;
+    max-width: 650px;
+}
+
+.section-heading h2 {
+    font-size: clamp(25px, 3vw, 35px);
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.section-heading p:last-child {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.feature-card {
+    padding: 27px;
+    border: 1px solid #e0eee4;
+    border-radius: 16px;
+    background: linear-gradient(140deg, #f4fbf6, #ffffff);
+    transition: 0.25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(20,75,43,0.08);
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    background: var(--light-green);
+    border-radius: 15px;
+    font-size: 25px;
+    margin-bottom: 17px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 17px;
+}
+
+.feature-card a {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.cta-section {
+    margin: 0 8% 65px;
+    padding: 40px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #126a3a, #1b9955);
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 29px;
+    margin-bottom: 10px;
+}
+
+.cta-section p {
+    color: #e0f5e7;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.btn-light {
+    background: white;
+    color: var(--dark-green);
+    border-color: white;
+}
+
+.btn-light:hover {
+    background: var(--light-green);
+}
+
+.footer {
+    padding: 35px 8%;
+    background: #123d2c;
+    color: white;
+    text-align: center;
+}
+
+.footer p {
+    color: #d3e5da;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.footer .copyright {
+    border-top: 1px solid #426653;
+    padding-top: 17px;
+    margin-top: 22px;
+    font-size: 12px;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 55px 6%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    nav {
+        gap: 13px;
+    }
+
+    .nav-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-card {
+        padding: 22px;
+    }
+
+    .section {
+        padding: 55px 6%;
+    }
+
+    .cta-section {
+        margin: 0 5% 45px;
+        padding: 30px 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 24px;
+    }
+}
+</style>
+
+<script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">Student<span>Hub</span></a>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="jobs.html">Explore Jobs</a>
+        <a href="applications.html">Applications</a>
+        <a href="profile.html">My Profile</a>
+    </nav>
+
+    <div class="nav-buttons">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="register.html" class="btn btn-primary">Join Now</a>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">YOUR FUTURE STARTS HERE</p>
+
+            <h1>Discover Opportunities.<br>
+                <span>Build Your Future.</span>
+            </h1>
+
+            <p class="hero-description">
+                Find internships, explore job opportunities, develop your
+                skills, and take the first step towards your dream career.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="jobs.html" class="btn btn-primary">
+                    Explore Opportunities →
+                </a>
+                <a href="register.html" class="btn btn-outline">
+                    Create Free Account
+                </a>
+            </div>
+
+            <div class="hero-note">
+                <span><span class="check">✓</span> Student-friendly opportunities</span>
+                <span><span class="check">✓</span> Career growth</span>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="career-icon">🎓</div>
+            <p class="card-label">YOUR CAREER JOURNEY</p>
+            <h2>Turn Your Potential Into Success</h2>
+
+            <div class="career-step">
+                <span class="step-number">01</span>
+                <div>
+                    <h3>Create Your Profile</h3>
+                    <p>Showcase your skills and education.</p>
+                </div>
+            </div>
+
+            <div class="career-step">
+                <span class="step-number">02</span>
+                <div>
+                    <h3>Discover Opportunities</h3>
+                    <p>Explore internships and entry-level jobs.</p>
+                </div>
+            </div>
+
+            <div class="career-step">
+                <span class="step-number">03</span>
+                <div>
+                    <h3>Apply With Confidence</h3>
+                    <p>Take the next step in your career.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features section">
+        <div class="section-heading">
+            <p class="eyebrow">WHY STUDENT HUB?</p>
+            <h2>Everything You Need to Get Started</h2>
+            <p>Simple tools to help you take control of your career journey.</p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>Find Jobs</h3>
+                <p>Explore internships and fresher opportunities that match your interests.</p>
+                <a href="jobs.html">Browse jobs →</a>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">👤</div>
+                <h3>Build Your Profile</h3>
+                <p>Show your education, skills, projects, and achievements.</p>
+                <a href="profile.html">Create profile →</a>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Track Applications</h3>
+                <p>Keep track of the job applications you submit through the portal.</p>
+                <a href="applications.html">View applications →</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Start Your Career Journey?</h2>
+        <p>Create your student account and explore new opportunities.</p>
+        <a href="register.html" class="btn btn-light">Get Started Today →</a>
+    </section>
+</main>
+
+<footer class="footer">
+    <a href="index.html" class="logo">Student<span>Hub</span></a>
+    <p>Connecting students with opportunities for a brighter future.</p>
+    <p class="copyright">
+        © <span id="currentYear">2026</span> Student Hub Career. All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications | Student Hub Career</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f8f3;
+            color: #26372b;
+        }
+
+        nav {
+            background: #176b3a;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 16px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #176b3a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #68776c;
+            margin-bottom: 25px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #173c2110;
+        }
+
+        .stat-card p {
+            color: #68776c;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card h2 {
+            color: #176b3a;
+            font-size: 28px;
+        }
+
+        .applications-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px #173c2110;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            color: #176b3a;
+            font-size: 21px;
+        }
+
+        select {
+            padding: 10px 12px;
+            border: 1px solid #d5e0d7;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .application {
+            border: 1px solid #e2eae3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .application h3 {
+            margin-bottom: 8px;
+            color: #26372b;
+        }
+
+        .application p {
+            color: #68776c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .pending {
+            background: #fff1ce;
+            color: #8a5a00;
+        }
+
+        .review {
+            background: #e3efff;
+            color: #205ba5;
+        }
+
+        .accepted {
+            background: #dff5e5;
+            color: #176b3a;
+        }
+
+        .rejected {
+            background: #ffe4e4;
+            color: #a12c2c;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 35px 10px;
+            color: #68776c;
+        }
+
+        .browse-button {
+            display: inline-block;
+            margin-top: 15px;
+            background: #176b3a;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #68776c;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 12px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Student Hub Career</div>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="profile.html">My Profile</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>My Applications</h1>
+        <p class="subtitle">
+            Track the status of your internship and job applications.
+        </p>
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>Total Applications</p>
+                <h2 id="totalCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Under Review</p>
+                <h2 id="reviewCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Accepted</p>
+                <h2 id="acceptedCount">0</h2>
+            </div>
+        </section>
+
+        <section class="applications-card">
+            <div class="section-heading">
+                <h2>Application History</h2>
+
+                <label>
+                    <span>Filter: </span>
+                    <select id="statusFilter">
+                        <option value="all">All Applications</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </label>
+            </div>
+
+            <div id="applicationList">
+                <div class="empty">
+                    <p>Loading your applications...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Student Hub Career | Build Your Future
+    </footer>
+
+    <script>
+        const applicationList =
+            document.getElementById("applicationList");
+
+        const statusFilter =
+            document.getElementById("statusFilter");
+
+        function getApplications() {
+            try {
+                const savedApplications =
+                    JSON.parse(
+                        localStorage.getItem("studentApplications")
+                    );
+
+                return Array.isArray(savedApplications)
+                    ? savedApplications
+                    : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function getStatusClass(status) {
+            const classes = {
+                "Pending": "pending",
+                "Under Review": "review",
+                "Accepted": "accepted",
+                "Rejected": "rejected"
+            };
+
+            return classes[status] || "pending";
+        }
+
+        function updateStatistics(applications) {
+            document.getElementById("totalCount").textContent =
+                applications.length;
+
+            document.getElementById("reviewCount").textContent =
+                applications.filter(function (application) {
+                    return application.status === "Under Review";
+                }).length;
+
+            document.getElementById("acceptedCount").textContent =
+                applications.filter(function (application) {
+                    return application.status === "Accepted";
+                }).length;
+        }
+
+        function renderApplications() {
+            const applications = getApplications();
+            const selectedStatus = statusFilter.value;
+
+            updateStatistics(applications);
+
+            const filteredApplications =
+                selectedStatus === "all"
+                    ? applications
+                    : applications.filter(function (application) {
+                        return application.status === selectedStatus;
+                    });
+
+            applicationList.replaceChildren();
+
+            if (filteredApplications.length === 0) {
+                const empty = document.createElement("div");
+                empty.className = "empty";
+
+                const paragraph = document.createElement("p");
+                paragraph.textContent = applications.length === 0
+                    ? "You haven't applied for any jobs yet."
+                    : "No applications match this filter.";
+
+                empty.appendChild(paragraph);
+
+                if (applications.length === 0) {
+                    const link = document.createElement("a");
+                    link.href = "jobs.html";
+                    link.className = "browse-button";
+                    link.textContent = "Explore Jobs";
+                    empty.appendChild(link);
+                }
+
+                applicationList.appendChild(empty);
+                return;
+            }
+
+            filteredApplications.forEach(function (application) {
+                const card = document.createElement("article");
+                card.className = "application";
+
+                const details = document.createElement("div");
+
+                const title = document.createElement("h3");
+                title.textContent =
+                    application.jobTitle || "Job Application";
+
+                const company = document.createElement("p");
+                company.textContent =
+                    "Company: " + (application.company || "Not specified");
+
+                const date = document.createElement("p");
+                date.textContent =
+                    "Applied on: " + (application.date || "Date unavailable");
+
+                details.append(title, company, date);
+
+                const status = document.createElement("span");
+                status.className =
+                    "status " + getStatusClass(application.status);
+                status.textContent = application.status || "Pending";
+
+                card.append(details, status);
+                applicationList.appendChild(card);
+            });
+        }
+
+        statusFilter.addEventListener("change", renderApplications);
+
+        renderApplications();
+    </script>
+
+</body>
+</html>
